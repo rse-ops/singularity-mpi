@@ -24,13 +24,13 @@ jobs:
       image: quay.io/singularity/singularity:v${{ matrix.singularity_version }}
       options: --privileged
 
-    name: Check ${{ matrix.changed_file }}
+    name: Build ${{ matrix.recipe }}
     steps:
 
       - name: Check out code for the container builds
         uses: actions/checkout@v2
 
-      - name: Build Container
+      - name: Build ${{ matrix.recipe }}
         env:
           recipe: ${{ matrix.recipe }}
         run: |
